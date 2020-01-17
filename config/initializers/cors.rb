@@ -5,18 +5,18 @@
 # You have to give specific set of rules for how you are going to be able to communicate 
 # These rules are going to be defined in this initializer
 
-Rails.application.config.middleware.inseret_before 0, Rack::Cors do
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     #For development
-    origin "http:localhost:3000"
-    resource "*", headers: :any, methods:[:get, :post, :put, :patch, :delete, :options, :head]
+    origins "http:localhost:3000"
+    resource "*", headers: :any, methods:[:get, :post, :put, :patch, :delete, :options, :head],
 credentials: true
   end
 
   #For production
   allow do
-    origin "https://jdh-authen-app-react.herokuapp.com"
-    resource "*", headers: :any, methods:[:get, :post, :put, :patch, :delete, :options, :head]
+    origins "https://jdh-authen-app-react.herokuapp.com"
+    resource "*", headers: :any, methods:[:get, :post, :put, :patch, :delete, :options, :head],
 credentials: true
   end
 end
